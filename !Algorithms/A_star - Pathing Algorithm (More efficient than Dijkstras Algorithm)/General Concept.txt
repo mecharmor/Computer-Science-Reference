@@ -1,0 +1,3 @@
+Similar to Dijkstras Algorithm in the sense where the distance between the nodes is used but A* is a smart algorithm
+that uses an additional distance which is the heuristic/physical distance between nodes. When adding into a the queue, the most efficient paths
+are calculated with 'f' equaling distance between nodes and estimated cost of that direction (distance from that node to destination).

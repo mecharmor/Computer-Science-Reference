@@ -1,0 +1,4 @@
+NP - non deterministic algorithms that take polynomial time.
+P - deterministic algorithms
+
+P is all the known algorithm's in today. P is a subset of NP and NP is the unknown algorithms that we might be able to solve tommorrow

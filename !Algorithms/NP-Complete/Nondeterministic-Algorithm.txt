@@ -1,0 +1,24 @@
+These are in essence magical algorithm's used for research. For example a NSearch algorithm is trying to be discovered that has a lookup time of O(1).
+We understand the steps needed to achieve this but do not know how to fully implement it. For a nonterministic algorithm we essentially set
+placeholders that we assume will work at O(1) time in the future so we can progress with our development.
+Example:
+
+Algorithm NSearch(A,n, key){
+
+	j = choice(n); // finds index and has a lookup of O(1)
+	if(key == A[j]){
+	write(j);
+	success(); // runtime of O(1)
+	}
+	write(0);
+	failure(); // runtme of O(1)
+
+
+}
+
+This development is used in research for Exponential time algorithms
+O/1 Knapsack
+Travleing sales person
+Sum of subsets
+graph coloring
+hamiltonian cycle
