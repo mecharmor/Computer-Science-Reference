@@ -1,0 +1,62 @@
+#include "Name.h"
+
+void passByRef(const unique_ptr<Name>&);
+void passByMove(unique_ptr<Name>);
+void passByShare(shared_ptr<Name>);
+
+int main() {
+	unique_ptr<Name> name_uPtr = make_unique<Name>("Mickey");
+	cout << "&name_uPtr:       " << &name_uPtr << endl;
+	cout << "name_uPtr owns:   " << addressof(*name_uPtr) << endl;
+	cout << "test getName():   " << name_uPtr->getName() << endl;
+	cout << "test getName():   " << *(name_uPtr->getName()) << endl;
+
+	cout << "\nTest pass-by-reference..." << endl;
+	passByRef(name_uPtr);
+
+	cout << "\nTest pass-by-move..." << endl;
+	passByMove(move(name_uPtr));
+	cout << "Expect: \"Destructor called.\"" << endl;
+
+	cout << "Expect: name_uPtr == nullptr" << endl;
+	if (name_uPtr == nullptr) {
+		cout << "\tname_uPtr == nullptr" << endl;
+	} else {
+		cout << "\tname_uPtr == " << &name_uPtr;
+	}
+
+	cout << "\nTest pass-by-share..." << endl;
+	name_uPtr = make_unique<Name>("Minnie");
+	shared_ptr<Name> name_sPtr{ name_uPtr.release() };
+	cout << "use_count(): " << name_sPtr.use_count() << endl;
+	passByShare(name_sPtr);
+	cout << "use_count(): " << name_sPtr.use_count() << endl;
+	passByShare(name_sPtr);
+	cout << "use_count(): " << name_sPtr.use_count() << endl;
+
+	cout << "END of Program" << endl;
+	return 0;
+}
+
+void passByRef(const unique_ptr<Name>& name_uPtr_R) {
+	cout << "&name_uPtr_R:     " << &name_uPtr_R << endl;
+	cout << "name_uPtr_R owns: " << addressof(*name_uPtr_R) << endl;
+	cout << "test getName():   " << name_uPtr_R->getName() << endl;
+	cout << "test getName():   " << *(name_uPtr_R->getName()) << endl;
+
+	cout << "END of passByRef()" << endl;
+}
+
+void passByMove(unique_ptr<Name> name_uPtr_M) {
+	cout << "&name_uPtr_M:     " << &name_uPtr_M << endl;
+	cout << "name_uPtr_M owns: " << addressof(*name_uPtr_M) << endl;
+	cout << "test getName():   " << name_uPtr_M->getName() << endl;
+	cout << "test getName():   " << *(name_uPtr_M->getName()) << endl;
+
+	cout << "END of passByMove()" << endl;
+}
+
+void passByShare(shared_ptr<Name> name_sPtr_S) {
+	cout << "use_count(): " << name_sPtr_S.use_count() << endl;
+	cout << "END of passByShare()" << endl;
+}

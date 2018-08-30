@@ -1,0 +1,34 @@
+//  Created by Frank M. Carrano and Tim Henry.
+//  Copyright (c) 2016 __Pearson Education__. All rights reserved.
+
+#include <iostream>
+#include <string>
+
+template<class ItemType>
+void bubbleSort(ItemType theArray[], int n) {
+	bool sorted = false;
+	int pass = 1;
+	while (!sorted && (pass < n)) {
+		sorted = true; 
+		for (int index = 0; index < n - pass; index++) {
+			int nextIndex = index + 1;
+			if (theArray[index] > theArray[nextIndex]) {
+				std::swap(theArray[index], theArray[nextIndex]);
+				sorted = false; 
+			} 
+		} 
+		pass++;
+	} 
+} 
+
+int main() {
+	std::string a[6] = { "Z", "X", "R", "K", "F", "B" };
+	bubbleSort(a, 6);
+	for (int i = 0; i < 6; i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+}
+
+/*
+B F K R X Z
+*/
