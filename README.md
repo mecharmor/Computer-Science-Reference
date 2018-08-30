@@ -3,10 +3,10 @@
 My personal collection of Computer Science resources while attending San Francisco State University
 ***
 
-####Credit where credit is due:
-* This material has some lecture material created by the following San Francisco State instructors:
-* Duc Ta, William Hsu, Anthony Souza : [CS Faculty & Staff](https://cs.sfsu.edu/people/faculty-and-staff).
-======
+## Credit where credit is due:
+* This reference material has some lecture material created by San Francisco State instructors.
+* [CS Faculty & Staff](https://cs.sfsu.edu/people/faculty-and-staff).
+---
 
 Useful General References:
 * [Big-O References for Algorithms](http://bigocheatsheet.com/).
